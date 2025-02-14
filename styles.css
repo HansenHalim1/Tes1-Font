@@ -1,0 +1,199 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+#font-selection {
+    display: none; /* Hide the font selection grid */
+}
+
+#select-fonts-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+#select-fonts-button:hover {
+    background-color: #0056b3;
+}
+
+#custom-text-area {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    font-size: 16px;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+#text-transform-controls {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+#text-transform-controls button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+#text-transform-controls button:hover {
+    background-color: #0056b3;
+}
+
+#font-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.font-container {
+    border: 1px solid #ddd;
+    padding: 15px;
+    position: relative;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.font-name {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.sample-text {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.remove-button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.remove-button:hover {
+    background-color: #c12a36;
+}
+
+.background-controls {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.background-controls input[type="color"] {
+    width: 35px;
+    height: 35px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.background-controls button {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.background-controls button:hover {
+    background-color: #5a6268;
+}
+
+/* Styles for font_selection.html */
+#font-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    margin: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.font-item {
+    border: 1px solid #ddd;
+    padding: 8px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: background-color 0.2s;
+}
+
+.font-item:hover {
+    background-color: #e0e0e0;
+}
+
+#font-selection button { /* Style the button in font_selection.html */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    margin: 20px auto;
+    display: block;
+}
+
+#font-selection button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Font Selection</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ... (Existing CSS from previous responses) ... */
+        #font-selection, #selected-fonts-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Increased minmax value */
+            gap: 10px;
+            margin: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .font-item {
+            /* ... (Existing font-item styles) ... */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 12px 16px; /* Increased padding */
+            overflow: hidden; /* Prevent text from overflowing */
+        }
+
+        .font-item .font-name {
+            font-size: 16px;
+            margin-bottom: 6px;
+            white-space: nowrap; /* Prevent font name from wrapping */
+            overflow: hidden;
+            text-overflow: ellipsis; /* Add ellipsis if name is too long */
+        }
+
+        .font-item .font-preview {
+            font-size: 18px; /* Slightly larger preview */
+            opacity: 0.7;
+            white-space: nowrap; /* Prevent preview text from wrapping */
+            overflow: hidden;
+            text-overflow: ellipsis; /* Add ellipsis if text is too long */
+        }
+
+        /* ... (Rest of your CSS) */
+    </style>
+</head>
+<body>
+    <h1>Select Fonts</h1>
+    <div id="font-selection"></div>
+
+    <h2>Selected Fonts:</h2>
+    <div id="selected-fonts-display"></div>
+
+    <button onclick="returnToMain()">Done</button>
+
+    <script>
+        const fontSelection = document.getElementById('font-selection');
+        const selectedFontsDisplay = document.getElementById('selected-fonts-display');
+        const availableFonts = [
+            "Arial", "Verdana", "Tahoma", "Courier New", "Times New Roman", "Georgia", "Impact", "Comic Sans MS", "Roboto", "Open Sans", "Montserrat", "Lato", "Oswald", "Poppins", "Raleway", "Merriweather", "Playfair Display", "Lobster", "Pacifico", "Sans-serif", "Serif", "Monospace", "Cursive", "Fantasy"
+        ];
+
+        window.addEventListener('load', () => {
+            const storedSelectedFonts = JSON.parse(localStorage.getItem('selectedFonts')) || [];
+            storedSelectedFonts.forEach(fontName => displaySelectedFont(fontName));
+        });
+
+        availableFonts.forEach(fontName => {
+            const fontItem = document.createElement('div');
+            fontItem.classList.add('font-item');
+
+            const fontNameSpan = document.createElement('span');
+            fontNameSpan.classList.add('font-name');
+            fontNameSpan.textContent = fontName;
+            fontNameSpan.style.fontFamily = fontName;
+
+            const fontPreviewSpan = document.createElement('span');
+            fontPreviewSpan.classList.add('font-preview');
+            fontPreviewSpan.textContent = "A happy fox is jumping over the fence";
+
+            fontItem.appendChild(fontNameSpan);
+            fontItem.appendChild(fontPreviewSpan);
+
+            fontItem.addEventListener('click', () => {
+                let selectedFonts = JSON.parse(localStorage.getItem('selectedFonts')) || [];
+
+                if (selectedFonts.includes(fontName)) {
+                    selectedFonts = selectedFonts.filter(font => font !== fontName);
+                    displaySelectedFont(fontName, true);
+                } else {
+                    selectedFonts.push(fontName);
+                    displaySelectedFont(fontName);
+                }
+
+                localStorage.setItem('selectedFonts', JSON.stringify(selectedFonts));
+            });
+            fontSelection.appendChild(fontItem);
+        });
+
+        function displaySelectedFont(fontName, remove = false) {
+            const selectedFontsContainer = document.getElementById('selected-fonts-display');
+            let fontItem = selectedFontsContainer.querySelector(`.font-item[data-font-name="${fontName}"]`);
+
+            if (remove) {
+                if (fontItem) {
+                    selectedFontsContainer.removeChild(fontItem);
+                }
+                return;
+            }
+
+            if (!fontItem) {
+                fontItem = document.createElement('div');
+                fontItem.classList.add('font-item');
+
+                const fontNameSpan = document.createElement('span');
+                fontNameSpan.classList.add('font-name');
+                fontNameSpan.textContent = fontName;
+                fontNameSpan.style.fontFamily = fontName;
+
+                const fontPreviewSpan = document.createElement('span');
+                fontPreviewSpan.classList.add('font-preview');
+                fontPreviewSpan.textContent = "A happy fox is jumping over the fence";
+
+                fontItem.appendChild(fontNameSpan);
+                fontItem.appendChild(fontPreviewSpan);
+                fontItem.dataset.fontName = fontName;
+                selectedFontsContainer.appendChild(fontItem);
+            }
+        }
+
+        function returnToMain() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
